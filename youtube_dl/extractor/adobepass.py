@@ -55,7 +55,7 @@ class AdobePassIE(InfoExtractor):
             authn_token = None
         if not authn_token:
             # TODO add support for other TV Providers
-            mso_id = 'DTV'
+            mso_id = 'Rogers'
             username, password = self._get_netrc_login_info(mso_id)
             if not username or not password:
                 return ''
@@ -80,8 +80,8 @@ class AdobePassIE(InfoExtractor):
             provider_login_page = post_form(
                 provider_redirect_page, 'Downloading Provider Login Page')
             mvpd_confirm_page = post_form(provider_login_page, 'Logging in', {
-                'username': username,
-                'password': password,
+                'UserName': username
+                'UserPassword': password
             })
             post_form(mvpd_confirm_page, 'Confirming Login')
 
